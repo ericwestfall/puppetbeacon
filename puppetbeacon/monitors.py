@@ -81,6 +81,9 @@ class PuppetAgent(AgentState):
         self.events_failed = None
         self.resources_failed = None
         self.resources_failed_restart = None
+        self.puppet_version = None
+
+        self.get_last_run()
 
     @property
     def run_duration(self):
@@ -115,6 +118,7 @@ class PuppetAgent(AgentState):
             safe_get(run_summary, 'resources', 'failed')
         self.resources_failed_restart = \
             safe_get(run_summary, 'resources', 'failed_to_restart')
+        self.puppet_version = safe_get(run_summary, 'version', 'puppet')
 
         LOG.debug('Puppet agent last executed a configuration run ' +
                   '%s seconds ago and ran for %s seconds.', self.last_run,

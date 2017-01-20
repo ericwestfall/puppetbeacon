@@ -36,9 +36,9 @@ def mimic_running_agent(path, operation='create'):
 puppet_agent = PuppetAgent(**kwargs)
 mimic_running_agent(ASSETS_DIR)
 time.sleep(3)
-puppet_agent.get_last_run()
 print puppet_agent.disabled
 print puppet_agent.disabled_message
 print puppet_agent.run_duration
 print puppet_agent.events_failed
+print puppet_agent.puppet_version
 mimic_running_agent(ASSETS_DIR, operation='delete')
